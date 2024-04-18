@@ -1,14 +1,12 @@
+version: '3.8'
 services:
   server:
     build: ./server
-    image: gemini-testing-server
-    container_name: gemini-testing-server
-    working_dir: /app
+    image: python-gcloud-testing
+    container_name: pgt-server
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=/app/.config/gcloud/application_default_credentials.json
     volumes:
-      - ./server/:/app
-      - ~/.config/gcloud/application_default_credentials.json:/app/.config/gcloud/application_default_credentials.json
-
+      - ./.config/gcloud:/app/.config/gcloud
     command: python main.py
     restart: no
