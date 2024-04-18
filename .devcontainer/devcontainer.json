@@ -1,0 +1,20 @@
+{
+  "name": "Python in Docker",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "server", // The name of your service in docker-compose.yml
+  "workspaceFolder": "/app", // The working directory in the Docker container
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "python.pythonPath": "/usr/local/bin/python", // Adjust this if your Python path is different
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.linting.pylintPath": "/usr/local/bin/pylint"
+      },
+      "extensions": ["ms-python.vscode-pylint", "ms-python.python"]
+    }
+  },
+  "postCreateCommand": "pip install -r requirements.txt",
+  "shutdownAction": "stopCompose"
+}
